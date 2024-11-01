@@ -48,7 +48,7 @@ def get_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return crud.get_books(db=db, skip=skip, limit=limit)
 
 
-@app.get("/books/author/{author_id}", response_model=list[schemas.BookRead])
+@app.get("/books/author/{author_id}/", response_model=list[schemas.BookRead])
 def get_books_by_author(author_id: int, db: Session = Depends(get_db)):
     books = db.query(models.Book).filter(models.Book.author_id == author_id).all()
     if not books:
