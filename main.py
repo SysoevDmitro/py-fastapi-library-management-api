@@ -30,7 +30,7 @@ def get_authors(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     return crud.get_authors(db=db, skip=skip, limit=limit)
 
 
-@app.get("/authors/{author_id}", response_model=schemas.AuthorRead)
+@app.get("/authors/{author_id}/", response_model=schemas.AuthorRead)
 def get_author(author_id: int, db: Session = Depends(get_db)):
     author = crud.get_author(db=db, author_id=author_id)
     if author is None:
